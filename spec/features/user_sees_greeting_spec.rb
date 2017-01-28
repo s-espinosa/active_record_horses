@@ -1,5 +1,4 @@
 require_relative '../spec_helper'
-require 'faker'
 require_relative 'load_database'
 
 include LoadDatabase
@@ -10,43 +9,6 @@ describe "When a user vists root" do
     visit('/')
     within('#greeting') do
       expect(page).to have_content('Welcome!')
-    end
-  end
-end
-
-describe 'when a user visits /horses/new' do
-  it 'sees a title' do
-    visit('/horses/new')
-
-    within('h1') do
-      expect(page).to have_content('Create a New Horse')
-    end
-
-  end
-
-  it 'submits a form with horse data' do
-    LoadDatabase.load
-    visit('/horses/new')
-
-    within('form') do
-      fill_in('horse[name]', :with => Faker::Cat.name)
-      fill_in('horse[total_winnings]', :with => Faker::Number.number(5))
-      click_on('Create New Horse')
-
-      page.has_xpath?('/horses/1')
-    end
-  end
-
-  it 'database is updated with horse' do
-    LoadDatabase.load
-    visit('/horses/new')
-
-    within 'form' do
-      fill_in('horse[name]', :with => Faker::Cat.name)
-      fill_in('horse[total_winnings]', :with => Faker::Number.number(5))
-      click_on('Create New Horse')
-
-      expect(Horse.all.count).to eq(11)
     end
   end
 end
