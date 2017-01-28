@@ -13,25 +13,6 @@ describe "When a user vists root" do
   end
 end
 
-describe 'when a user visits /horses' do
-  it 'sees a list of all horses' do
-    LoadDatabase.load
-
-    visit('/horses')
-
-    within('h1') do
-      expect(page).to have_content('All Horses')
-    end
-
-    within('table') do
-      LoadDatabase.table_headers.each { |header| expect(page).to have_content(header)}
-      LoadDatabase.jockeys.each { |jockey| expect(page).to have_content(jockey)}
-      LoadDatabase.breeds.each { |breed| expect(page).to have_content(breed)}
-    end
-
-  end
-end
-
 describe 'when a user visits/jockeys/:id' do
   it 'has a report of total winnings' do
     LoadDatabase.load
