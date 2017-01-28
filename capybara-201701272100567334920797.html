@@ -1,0 +1,36 @@
+<h1>Create a New Horse</h1>
+
+<form action="/horses" method="post">
+  <label for="">Name:</label>
+  <input type="textfield" name="horse[name]">
+  <label for="">Total Winnings:</label>
+  <input type="textfield" name="horse[total_winnings]">
+  <label for="">Jockey:</label>
+  <select name="horse[jockey_id]">
+    
+      <option value=1>Jim</option>
+    
+      <option value=2>Joe</option>
+    
+      <option value=3>Jessie</option>
+    
+      <option value=4>Janet</option>
+    
+      <option value=5>Jessica</option>
+    
+  </select>
+  <select name="horse[breed_id]">
+    
+      <option value=1>Palomino</option>
+    
+      <option value=2>Clydesdale</option>
+    
+      <option value=3>Percheron</option>
+    
+      <option value=4>Mustang</option>
+    
+      <option value=5>Trakehner</option>
+    
+  </select>
+  <input type="submit" value="Create New Horse" />
+</form>
